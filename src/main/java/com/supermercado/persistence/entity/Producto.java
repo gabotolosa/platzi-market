@@ -1,6 +1,7 @@
 package com.supermercado.persistence.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "productos")
@@ -20,12 +21,18 @@ public class Producto {
     private String codigoBarra;
 
      @Column(name = "precio_venta")
-     private Double precioVenta;
+     private BigDecimal precioVenta;
 
      @Column(name = "cantidad_stock")
      private Integer cantidadStock;
 
      private Boolean estado;
+
+     //a travez d esta relacion no va ni insertar ni actualizar una nueva categoria
+     //sirve pa recuperar a q categoria pertenece un producto
+     @ManyToOne
+     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+     private Categoria categoria;
 
     public Long getIdProducto() {
         return idProducto;
@@ -59,11 +66,11 @@ public class Producto {
         this.codigoBarra = codigoBarra;
     }
 
-    public Double getPrecioVenta() {
+    public BigDecimal getPrecioVenta() {
         return precioVenta;
     }
 
-    public void setPrecioVenta(Double precioVenta) {
+    public void setPrecioVenta(BigDecimal precioVenta) {
         this.precioVenta = precioVenta;
     }
 
@@ -82,4 +89,6 @@ public class Producto {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+
+
 }

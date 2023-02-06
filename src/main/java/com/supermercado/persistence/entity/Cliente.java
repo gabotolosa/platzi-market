@@ -1,10 +1,11 @@
 package com.supermercado.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
-public class Clliente {
+public class Cliente {
 
     @Id
     private Long id;
@@ -16,6 +17,9 @@ public class Clliente {
 
     @Column(name = "correo_electronico")
     private String correoElectronico;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
 
     public Long getId() {
         return id;
