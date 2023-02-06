@@ -18,7 +18,7 @@ public class Producto {
     private Long idCategoria;
 
      @Column(name = "codigo_barras")
-    private String codigoBarra;
+    private String codigoBarras;
 
      @Column(name = "precio_venta")
      private BigDecimal precioVenta;
@@ -58,12 +58,12 @@ public class Producto {
         this.idCategoria = idCategoria;
     }
 
-    public String getCodigoBarra() {
-        return codigoBarra;
+    public String getCodigoBarras() {
+        return codigoBarras;
     }
 
-    public void setCodigoBarra(String codigoBarra) {
-        this.codigoBarra = codigoBarra;
+    public void setCodigoBarras(String codigoBarras) {
+        this.codigoBarras = codigoBarras;
     }
 
     public BigDecimal getPrecioVenta() {
