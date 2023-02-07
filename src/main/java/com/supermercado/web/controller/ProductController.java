@@ -3,8 +3,7 @@ package com.supermercado.web.controller;
 import com.supermercado.domain.Product;
 import com.supermercado.domain.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,23 +15,28 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @GetMapping("/all")
     public List<Product> getAll(){
         return productService.getAll();
     }
 
-    public Optional<Product> getProduct(long productId){
+    @GetMapping("/{id}")
+    public Optional<Product> getProduct(@PathVariable("id") long productId){
         return productService.getProduct(productId);
     }
 
-    public Optional<List<Product>> getByCategory(long categoryId){
+    @GetMapping("/category/{categoryId}")
+    public Optional<List<Product>> getByCategory(@PathVariable("categoryId") long categoryId){
         return productService.getByCategory(categoryId);
     }
 
-    public Product save(Product product){
+    @PostMapping("/save")
+    public Product save(@RequestBody Product product){
         return productService.save(product);
     }
 
-    public boolean delete(long productId){
+    @DeleteMapping("/delete/{id}")
+    public boolean delete(@PathVariable("id") long productId){
         return productService.delete(productId);
     }
 }
